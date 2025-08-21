@@ -41,15 +41,17 @@ elcheck <- function(x, y) {
   return(eq)
 }
 
-topingredients <- function(recipes)  {
-  
+topingredients <- function(recipes) {   
   df <- read.csv(recipes, stringsAsFactors = FALSE)
   ings <- unlist(strsplit(df$ingredients, ", "))
   ings <- tolower(trimws(ings))
   tab <- sort(table(ings), decreasing = TRUE)
+  
+  top_n <- min(3, length(tab))   # don't try to take more than available
+  
   data.frame(
-    name  = names(tab)[1:3],
-    count = as.integer(tab[1:3]),
+    name  = names(tab)[seq_len(top_n)],
+    count = as.integer(tab[seq_len(top_n)]),
     row.names = NULL
   )
 }
