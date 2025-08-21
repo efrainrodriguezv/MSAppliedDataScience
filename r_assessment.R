@@ -43,7 +43,7 @@ elcheck <- function(x, y) {
 
 topingredients <- function(recipes)  {
   
-  df <- read.csv(filename, stringsAsFactors = FALSE)
+  df <- read.csv(recipes, stringsAsFactors = FALSE)
   ings <- unlist(strsplit(df$ingredients, ", "))
   ings <- tolower(trimws(ings))
   tab <- sort(table(ings), decreasing = TRUE)
