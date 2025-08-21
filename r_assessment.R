@@ -14,7 +14,7 @@ fibseq <- function(n) {
     fib[k] <- fib[k - 1] + fib[k - 2]               
    }
   
-   return(as.integer(fib))
+   return(fib)
 
 }
 
